@@ -1,0 +1,12 @@
+unsafe Object fJSON_Parse(fVM vm, String source);
+unsafe Object fJSON_ToString(fVM vm, Object obj);
+
+module JSON {
+	Object parse(String source) {
+		return fJSON_Parse(__vm__, source)
+	}
+
+	Object toString(Object obj) {
+		return fJSON_ToString(__vm__, obj)
+	}
+}

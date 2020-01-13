@@ -1,0 +1,6 @@
+{
+	"name": "json",
+	"author": "flexc",
+	"files": ["json.fc", "json.c"],
+	"tests": ["json_tests.fc"]
+}

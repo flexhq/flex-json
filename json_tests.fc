@@ -1,0 +1,79 @@
+void main(List args) {
+	puts("FLEX JSON Package Tests")
+
+	testParseJson()
+	// testDumpJson()
+}
+
+void testParseJson() {
+	puts("[TEST] testParseJson")
+	var str
+
+	str = "\"hello world\""
+	puts(JSON::parse(str) == "hello world")
+
+	str = "\"asdf\""
+	puts(JSON::parse(str) == "asdf")
+
+	str = "-3.141592653589"
+	puts(JSON::parse(str) == -3.141592653589)
+
+	str = "5"
+	puts(JSON::parse(str) == 5)
+
+	str = "-123456789"
+	puts(JSON::parse(str) == -123456789)
+
+	str = "true"
+	puts(JSON::parse(str) == true)
+
+	str = "false"
+	puts(JSON::parse(str) == false)
+
+	str = "null"
+	puts(JSON::parse(str) == null)
+
+	// str = "-123123123123123123123123123123"
+	// puts(JSON::parse(str) == -123123123123123123123123123123)
+
+	str = "[1, 2.03, true, false,null,\"yay!\"]"
+	Vector res = JSON::parse(str)
+	puts(res)
+
+	str = "{\"hello\": \"world\", \"numbers\": [1,2,3,4,5.0],\"x\": 4, \"y\": 5.0}"
+	HashTable h_res = JSON::parse(str)
+	puts(h_res)
+}
+
+void testDumpJson() {
+	puts("[TEST] testDumpJson")
+	String res
+
+	// Test String Root
+	res = JSON::toString("hello world")
+	puts(res == "\"hello world\"")
+
+	res = JSON::toString(-3.141592653589)
+	puts(res == "-3.141592653589000")
+
+	res = JSON::toString(5)
+	puts(res == "5")
+
+	res = JSON::toString(-123456789)
+	puts(res == "-123456789")
+
+	res = JSON::toString(true)
+	puts(res == "true")
+
+	res = JSON::toString(false)
+	puts(res == "false")
+
+	res = JSON::toString(null)
+	puts(res == "null")
+
+	res = JSON::toString([1, 2.03, true, false, null, "yay!", {"foo": "bar"}])
+	puts(res == "[1,2.030000000000000,true,false,null,\"yay!\",{\"foo\":\"bar\"}]")
+
+	res = JSON::toString({"hello": "world", "numbers": [1,2,3,4,5.0], "x": 4, "y": 5.0})
+	puts(res == "{\"hello\":\"world\",\"numbers\":[1,2,3,4,5.000000000000000],\"x\":4,\"y\":5.000000000000000}")
+}
