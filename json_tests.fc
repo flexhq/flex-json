@@ -2,7 +2,7 @@ void main(List args) {
 	puts("FLEX JSON Package Tests")
 
 	testParseJson()
-	// testDumpJson()
+	testDumpJson()
 }
 
 void testParseJson() {
